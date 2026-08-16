@@ -1,0 +1,49 @@
+name: 更新音乐歌单
+
+# 手动触发：仓库 Actions 页面 → Run workflow → 可选填歌单 ID
+on:
+  workflow_dispatch:
+    inputs:
+      playlist_id:
+        description: "网易云歌单 ID"
+        required: false
+        default: "5013236190"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-music
+  cancel-in-progress: false
+
+jobs:
+  update-playlist:
+    name: 生成并验证歌单
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 生成歌单
+        run: python3 scripts/update_music.py "${{ github.event.inputs.playlist_id }}"
+
+      - name: 验证歌单
+        run: python3 scripts/validate_music.py
+
+      - name: 提交变更
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/music.json
+          if git diff --cached --quiet; then
+            echo "歌单无变化，跳过提交"
+          else
+            git commit -m "chore: 更新音乐歌单（$(date +%Y-%m-%d)）"
+            git push
+          fi

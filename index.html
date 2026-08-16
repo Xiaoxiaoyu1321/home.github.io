@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -12,119 +12,97 @@
     <meta name="keywords" content="Xiaoxiaoyu1321,个人主页,学生">
     <!-- 浏览器标签上显示的图标 -->
     <link rel="icon" type="image/ico" href="./static/images/ico.jpg">
-    <!-- 样式文件 -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" href="./static/style.css?v=1.2.0">
+    <!-- Material Icons 图标字体（本地化） -->
+    <link rel="stylesheet" href="./static/material-icons/material-icons.css">
+    <!-- 播放器样式 -->
     <link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
+    <!-- 主页样式（Material Design 3） -->
+    <link rel="stylesheet" href="./static/md.css?v=7">
 
-    <!-- 自定义设置 -->
-    <style>
-        body {
-            /*背景图片URL 可使用随机图片API */
-            background-image: url("./static/images/bg.jpg");
-        }
-
-        .photo-bg {
-            /* 卡片左侧图片 */
-            background-image: url("./static/images/fbg.jpg");
-        }
-
-        .kz-video {
-            /* 背景视频，none: 不显示 unset 显示 */
-            display: none; 
-        }
-    </style>
     <script>
-        // 音乐设置
-        let meting_music_api = "https://www.kezez.com/api/meting-api/";// meting api
-        let music_server = "netease"; // 音乐服务：网易云 netease 参见 meting api支持的服务
-        let music_type = "playlist"; // 歌曲类型：歌单playlist 单首歌曲 song  专辑 album
-        let music_id = "5013236190"; // 歌单ID或歌曲ID或者专辑ID 20173709 29732992
-        let music_order = "random"; // 音频循环顺序, 顺序播放： 'list', 随机播放：'random'
-        let music_mini = false; // mini模式 吸底模式开启后此选项实效 true / false
-        let music_fixed = false; // 吸底模式
-        let music_volume = 0.7; // 默认音量
-        let music_autoplay = false; // 自动播放
-        let music_loop = "all"; // 音频循环播放, 可选值: 'all', 'one', 'none' ，分别为全部循环，单曲循环，不循环
-
         // 一言设置
         let hitokoto_api = "https://v1.hitokoto.cn"; // 一言API
+        // 音乐播放器使用本地歌单 static/music.json（由网易云歌单生成）
     </script>
-    <!-- end 自定义设置 -->
 </head>
 
 <body>
-    <div class="kz-video">
-        <video src="./static/video/lty.mp4" autoplay="autoplay" loop muted playsinline="" webkit-playsinline=""></video>
-    </div>
-    <div id="main" class="container">
-        <div class="row my-card justify-content-center">
-            <div class="col-lg-4 photo-bg"></div>
-            <div class="col-lg-8 card">
-                <!-- 大标题 -->
-                <h1>Xiaoxiaoyu1321 的个人主页</h1>
-                <!-- 标题下的一段话 -->
-                <p>
-                    只是一个学生，喜欢听歌，有时候会写点没用的东西(？
-                </p>
-                <p id="hitokoto_text">:D 一言获取中...</p>
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- 导航按钮组 -->
-                        <button data-href="https://blog.xiaoxiaoyu.org" data-title="Blog" data-window="newtab" data-anim="4"
-                            data-area-w="80%" data-area-h="90%" data-shade="false"
-                            class="kz-nav-btn btn btn-primary col-lg-4">Blog</button>
 
-                        <button data-href="https://github.com/Xiaoxiaoyu1321" data-title="GitHub" data-window="newtab"
-                            data-anim="4" data-area-w="80%" data-area-h="90%" data-shade="false"
-                            class="kz-nav-btn btn btn-secondary col-lg-4">GitHub</button>
-
-                        <button data-href="https://space.bilibili.com/531456803"
-                            data-title="Blog" data-window="newtab" data-anim="4" data-area-w="80%" data-area-h="90%"
-                            data-shade="false" class="kz-nav-btn btn btn-success col-lg-4">bilibili</button>
-
-                        <!-- end 导航按钮组 -->
-                    </div>
-                </div>
-                <!-- aplayer inner -->
-                <div id="aplayer-inner" class="aplayer"></div>
-                <!-- end aplayer inner -->
-                <ul class="social mt-1">
-                    <li><a href="https://weibo.com/u/7397477634"><i class="fab fa-weibo " aria-hidden="true"></i></a>
-                    </li>
-                    <li><a href="https://github.com/Xiaoxiaoyu1321"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-                    <li><a href="https://space.bilibili.com/531456803"><i class="fab fa-bilibili" aria-hidden="true"></i></a></li>
-                    
-					<!--
-					<li><a href="#"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.zhihu.com/people/kaygb/"><i class="fab fa-zhihu"
-                                aria-hidden="true"></i></a></li> 
-					-->
-                </ul>
-				
-                <footer>
-                    <p><a href="https://icp.gov.moe/?keyword=20258712" target="_blank">萌ICP备20258712号</a>
-                        
-                    </p>
-                </footer>
-				
+    <main class="page">
+        <section class="hero">
+            <!-- 头像 -->
+            <div class="hero-avatar">
+                <img src="./static/images/avatar.jpg" alt="头像">
             </div>
-        </div>
 
+            <!-- 大标题 -->
+            <h1 class="hero-title">Xiaoxiaoyu1321</h1>
+
+            <!-- 介绍 -->
+            <p class="hero-subtitle">
+                只是一个学生，喜欢听歌，有时候会写点没用的东西(？
+            </p>
+
+            <!-- 一言 -->
+            <p class="hero-hitokoto" id="hitokoto_text">:D 一言获取中...</p>
+
+            <!-- 导航按钮 -->
+            <div class="nav-grid">
+                <a class="md-btn" href="https://blog.xiaoxiaoyu.org" target="_blank" rel="noopener">
+                    <i class="material-icons" aria-hidden="true">rss_feed</i> Blog
+                </a>
+                <a class="md-btn" href="https://github.com/Xiaoxiaoyu1321" target="_blank" rel="noopener">
+                    <i class="material-icons" aria-hidden="true">code</i> GitHub
+                </a>
+                <a class="md-btn" href="https://space.bilibili.com/531456803" target="_blank" rel="noopener">
+                    bilibili
+                </a>
+                <a class="md-btn" href="https://music.163.com/#/artist?id=57531854" target="_blank" rel="noopener">
+                    网易音乐人
+                </a>
+            </div>
+
+            <!-- 社交图标（内联 SVG，本地化避免字体图标缺失） -->
+            <div class="social-row">
+                <a class="social-link" href="https://weibo.com/u/7397477634" target="_blank" rel="noopener"
+                    aria-label="微博"><svg viewBox="0 0 512 512" width="20" height="20" aria-hidden="true"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg></a>
+                <a class="social-link" href="https://github.com/Xiaoxiaoyu1321" target="_blank" rel="noopener"
+                    aria-label="GitHub"><svg viewBox="0 0 496 512" width="20" height="20" aria-hidden="true"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+                <a class="social-link" href="https://space.bilibili.com/531456803" target="_blank" rel="noopener"
+                    aria-label="哔哩哔哩"><svg viewBox="0 0 512 512" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg></a>
+            </div>
+
+            <!-- 页脚 -->
+            <footer class="hero-footer">
+                <a href="https://icp.gov.moe/?keyword=20258712" target="_blank" rel="noopener">萌ICP备20258712号</a>
+            </footer>
+        </section>
+    </main>
+
+    <!-- 音乐 FAB -->
+    <button class="fab" id="music-fab" aria-label="音乐播放器" title="随机音乐播放器">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    </button>
+
+    <!-- 音乐播放器悬浮弹窗 -->
+    <div class="player-modal" id="player-modal" hidden>
+        <div class="player-modal-card">
+            <div class="player-modal-header">
+                <span class="player-modal-title">随机音乐播放器</span>
+                <button class="player-modal-close" id="player-modal-close" aria-label="关闭">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div id="aplayer-inner"></div>
+            <p class="player-modal-error" id="player-error" hidden>音乐加载失败 :( 请稍后再试</p>
+        </div>
     </div>
 
-    <!-- aplayer -->
-    <div id="aplayer-fixed" class="aplayer"></div>
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 依赖库 -->
     <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
-    <script src="./static/Meting.min.js"></script>
-    <!-- end_aplayer -->
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
+    <!-- 主页脚本 -->
+    <script src="./static/md.js"></script>
 
-    <script src="./static/main.js"></script>
+</body>
 
 </html>
