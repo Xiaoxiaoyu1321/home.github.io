@@ -135,7 +135,8 @@ body {
 /* ---------- 导航按钮（MD3 Filled Tonal 药丸按钮） ---------- */
 .nav-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* minmax(0,1fr) 防止按钮内容把列撑宽、挤压相邻按钮 */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-bottom: 32px;
 }
