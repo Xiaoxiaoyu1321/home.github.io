@@ -11,13 +11,14 @@
     <!-- 网站关键字 -->
     <meta name="keywords" content="Xiaoxiaoyu1321,个人主页,学生">
     <!-- 浏览器标签上显示的图标 -->
-    <link rel="icon" type="image/ico" href="./static/images/ico.jpg">
+    <link rel="icon" type="image/png" href="./static/images/favicon.png">
+    <link rel="apple-touch-icon" href="./static/images/apple-touch-icon.png">
     <!-- Material Icons 图标字体（本地化） -->
     <link rel="stylesheet" href="./static/material-icons/material-icons.css">
     <!-- 播放器样式 -->
     <link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
     <!-- 主页样式（Material Design 3） -->
-    <link rel="stylesheet" href="./static/md.css?v=7">
+    <link rel="stylesheet" href="./static/md.css?v=8">
 
     <script>
         // 一言设置
@@ -38,10 +39,8 @@
             <!-- 大标题 -->
             <h1 class="hero-title">Xiaoxiaoyu1321</h1>
 
-            <!-- 介绍 -->
-            <p class="hero-subtitle">
-                只是一个学生，喜欢听歌，有时候会写点没用的东西(？
-            </p>
+            <!-- 介绍（内容来自 static/site.config.js 的 signature） -->
+            <p class="hero-subtitle" id="site-signature"></p>
 
             <!-- 一言 -->
             <p class="hero-hitokoto" id="hitokoto_text">:D 一言获取中...</p>
@@ -95,11 +94,14 @@
             </div>
             <div id="aplayer-inner"></div>
             <p class="player-modal-error" id="player-error" hidden>音乐加载失败 :( 请稍后再试</p>
+            <p class="player-modal-playlist"><a id="playlist-link" href="#" target="_blank" rel="noopener">网易云歌单</a></p>
         </div>
     </div>
 
     <!-- 依赖库 -->
     <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
+    <!-- 网站个性化配置 -->
+    <script src="./static/site.config.js"></script>
     <!-- 主页脚本 -->
     <script src="./static/md.js"></script>
 

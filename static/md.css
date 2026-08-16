@@ -343,6 +343,22 @@ body {
     text-align: center;
 }
 
+.player-modal-playlist {
+    margin-top: 12px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.player-modal-playlist a {
+    color: var(--md-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.player-modal-playlist a:hover {
+    text-decoration: underline;
+}
+
 /* 弹窗内播放器圆角 */
 #aplayer-inner .aplayer {
     border-radius: 12px !important;

@@ -6,6 +6,14 @@
 (function () {
     "use strict";
 
+    var CONFIG = window.SITE_CONFIG || {};
+
+    // ---------- 个性签名（来自 static/site.config.js） ----------
+    (function () {
+        var el = document.getElementById("site-signature");
+        if (el && CONFIG.signature) el.textContent = CONFIG.signature;
+    })();
+
     // ---------- 一言 ----------
     fetch(hitokoto_api)
         .then(function (res) {
@@ -74,6 +82,12 @@
 
     function openModal() {
         if (!inited) initPlayer();
+        // 歌单链接（来自 site.config.js）
+        var pl = document.getElementById("playlist-link");
+        if (pl && CONFIG.playlist_url) {
+            pl.href = CONFIG.playlist_url;
+            pl.textContent = "查看网易云歌单";
+        }
         modal.hidden = false;
         document.body.style.overflow = "hidden";
         if (ap) ap.play();

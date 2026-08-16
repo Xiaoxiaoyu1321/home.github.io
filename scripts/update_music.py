@@ -2,18 +2,36 @@
 """从网易云歌单生成 static/music.json（APlayer 音频列表格式）。
 
 用法: python3 scripts/update_music.py [歌单ID]
-默认歌单: 5013236190
+歌单 ID 优先级: 命令行参数 > static/site.config.js 中的 playlist_id > 内置默认 5013236190
 
 依赖: 仅 Python 标准库。可设置 https_proxy 环境变量走代理。
 """
 import json
+import re
 import sys
 import time
 import urllib.parse
 import urllib.request
 
-PLAYLIST_ID = sys.argv[1] if len(sys.argv) > 1 else "5013236190"
+DEFAULT_PLAYLIST_ID = "5013236190"
 OUTPUT = "static/music.json"
+
+
+def get_playlist_id_from_config():
+    """从 static/site.config.js 中读取 playlist_id（供 GitHub Action 使用）。"""
+    try:
+        text = open("static/site.config.js", encoding="utf-8").read()
+    except OSError:
+        return None
+    m = re.search(r"playlist_id\s*:\s*[\"'](\d+)[\"']", text)
+    return m.group(1) if m else None
+
+
+PLAYLIST_ID = (
+    sys.argv[1]
+    if len(sys.argv) > 1
+    else (get_playlist_id_from_config() or DEFAULT_PLAYLIST_ID)
+)
 
 BASE_HEADERS = {
     "Referer": "https://music.163.com",
