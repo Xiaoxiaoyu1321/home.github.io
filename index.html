@@ -17,21 +17,12 @@
     <!-- 播放器样式 -->
     <link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
     <!-- 主页样式（Material Design 3） -->
-    <link rel="stylesheet" href="./static/md.css?v=6">
+    <link rel="stylesheet" href="./static/md.css?v=7">
 
     <script>
-        // 音乐设置（沿用原配置）
-        let meting_music_api = "https://www.kezez.com/api/meting-api/"; // meting api
-        let music_server = "netease"; // 音乐服务：网易云 netease
-        let music_type = "playlist"; // 歌曲类型：歌单playlist 单首歌曲 song 专辑 album
-        let music_id = "5013236190"; // 歌单ID或歌曲ID或者专辑ID
-        let music_order = "random"; // 音频循环顺序：'list' 顺序 'random' 随机
-        let music_volume = 0.7; // 默认音量
-        let music_autoplay = false; // 自动播放
-        let music_loop = "all"; // 音频循环播放：'all' 'one' 'none'
-
         // 一言设置
         let hitokoto_api = "https://v1.hitokoto.cn"; // 一言API
+        // 音乐播放器使用本地歌单 static/music.json（由网易云歌单生成）
     </script>
 </head>
 
@@ -108,9 +99,7 @@
     </div>
 
     <!-- 依赖库 -->
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
-    <script src="./static/Meting.min.js"></script>
     <!-- 主页脚本 -->
     <script src="./static/md.js"></script>
 

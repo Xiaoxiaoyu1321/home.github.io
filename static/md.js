@@ -1,6 +1,6 @@
 /* ==========================================================================
    Next_md 分支：Material Design 3 主页脚本
-   功能：一言语录 · 随机音乐播放器（悬浮弹窗）· FAB 开关
+   功能：一言语录 · 随机音乐播放器（本地歌单 + 悬浮弹窗）· FAB 开关
    ========================================================================== */
 
 (function () {
@@ -27,7 +27,7 @@
             if (el) el.textContent = ":D 一言获取失败";
         });
 
-    // ---------- 音乐播放器（悬浮弹窗） ----------
+    // ---------- 音乐播放器（本地歌单 + 悬浮弹窗） ----------
     var modal = document.getElementById("player-modal");
     var fab = document.getElementById("music-fab");
     var closeBtn = document.getElementById("player-modal-close");
@@ -39,42 +39,37 @@
         if (errorEl) errorEl.hidden = false;
     }
 
-    // 首次打开弹窗时初始化播放器（此时弹窗可见，容器宽度正常）
+    // 首次打开弹窗时加载本地歌单并初始化播放器（此时弹窗可见，容器宽度正常）
     function initPlayer() {
         inited = true;
-        $.ajax({
-            url: meting_music_api,
-            data: {
-                server: music_server,
-                type: music_type,
-                id: music_id
-            },
-            dataType: "json",
-            success: function (audio) {
+        fetch("static/music.json")
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (audio) {
                 try {
                     ap = new APlayer({
                         container: document.getElementById("aplayer-inner"),
                         audio: audio,
                         fixed: false,     // 弹窗内普通模式
                         autoplay: true,   // 用户点击 FAB 后自动播放
-                        order: music_order,
+                        order: "random",  // 随机播放
                         listFolded: false,
-                        volum: music_volume,
+                        volum: 0.7,
                         mini: false,
-                        lrcType: 3,
+                        lrcType: 0,
                         preload: "auto",
-                        loop: music_loop
+                        loop: "all"
                     });
                 } catch (e) {
                     console.error("APlayer 初始化失败", e);
                     showError();
                 }
-            },
-            error: function () {
-                console.warn("Meting API 不可用，播放器未加载");
+            })
+            .catch(function (err) {
+                console.error("歌单加载失败", err);
                 showError();
-            }
-        });
+            });
     }
 
     function openModal() {
