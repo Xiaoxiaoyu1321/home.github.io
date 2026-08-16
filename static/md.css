@@ -264,22 +264,88 @@ body {
     transform: scale(.9);
 }
 
-.fab .material-icons {
-    font-size: 26px;
+.fab svg {
+    fill: currentColor;
 }
 
-/* ---------- 吸底播放器 ---------- */
-.aplayer {
-    border-radius: 16px 16px 0 0 !important;
+/* ---------- 音乐播放器悬浮弹窗 ---------- */
+.player-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(29, 27, 32, .45);
+    padding: 20px;
 }
 
-.aplayer.aplayer-fixed .aplayer-body {
-    bottom: 0;
-    border-radius: 16px 16px 0 0 !important;
+.player-modal[hidden] {
+    display: none;
 }
 
-#aplayer-fixed.hidden {
-    display: none !important;
+.player-modal-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--md-surface);
+    border-radius: 24px;
+    box-shadow: var(--md-shadow-3);
+    padding: 20px 20px 24px;
+    animation: modal-pop .22s ease;
+}
+
+@keyframes modal-pop {
+    from {
+        transform: scale(.92) translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.player-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.player-modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--md-on-surface);
+}
+
+.player-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--md-on-surface-variant);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .2s ease;
+}
+
+.player-modal-close:hover {
+    background: var(--md-surface-variant);
+}
+
+.player-modal-error {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #B3261E;
+    text-align: center;
+}
+
+/* 弹窗内播放器圆角 */
+#aplayer-inner .aplayer {
+    border-radius: 12px !important;
 }
 
 /* ---------- 移动端适配 ---------- */
@@ -315,6 +381,15 @@ body {
         right: 18px;
         width: 52px;
         height: 52px;
+    }
+
+    .player-modal {
+        padding: 14px;
+    }
+
+    .player-modal-card {
+        padding: 16px 16px 20px;
+        border-radius: 20px;
     }
 }
 
