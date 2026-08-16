@@ -1,0 +1,321 @@
+/* ==========================================================================
+   Next_md 分支：Material Design 3 风格主页样式
+   配色遵循 MD3 默认主题（紫色系），组件含 elevation 阴影 / 圆角 / 状态层
+   ========================================================================== */
+
+:root {
+    /* MD3 色彩令牌 */
+    --md-primary: #6750A4;
+    --md-on-primary: #FFFFFF;
+    --md-primary-container: #EADDFF;
+    --md-on-primary-container: #21005D;
+    --md-secondary-container: #E8DEF8;
+    --md-on-secondary-container: #1D192B;
+    --md-surface: #FEF7FF;
+    --md-surface-dim: #DED8E1;
+    --md-surface-variant: #E7E0EC;
+    --md-on-surface: #1D1B20;
+    --md-on-surface-variant: #49454F;
+    --md-outline: #79747E;
+
+    /* MD3 elevation 阴影 */
+    --md-shadow-1: 0 1px 2px rgba(0, 0, 0, .30), 0 1px 3px 1px rgba(0, 0, 0, .15);
+    --md-shadow-2: 0 1px 2px rgba(0, 0, 0, .30), 0 2px 6px 2px rgba(0, 0, 0, .15);
+    --md-shadow-3: 0 4px 8px 3px rgba(0, 0, 0, .15), 0 1px 3px rgba(0, 0, 0, .30);
+
+    --radius-card: 28px;
+    --radius-fab: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--md-on-surface);
+    background: linear-gradient(160deg, #F6F2FB 0%, #E8DEF8 55%, #DCD2F2 100%) fixed;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 页面布局 ---------- */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+}
+
+/* ---------- 主卡片 ---------- */
+.hero {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: var(--md-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--md-shadow-3);
+    padding: 48px 40px 28px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 卡片顶部装饰条（MD3 大圆角下的小点缀） */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(234, 221, 255, .9) 0%, rgba(234, 221, 255, 0) 70%);
+    pointer-events: none;
+}
+
+/* ---------- 头像 ---------- */
+.hero-avatar {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    padding: 4px;
+    background: var(--md-primary-container);
+    box-shadow: var(--md-shadow-2);
+}
+
+.hero-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--md-surface);
+}
+
+/* ---------- 标题与介绍 ---------- */
+.hero-title {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: .2px;
+    color: var(--md-on-surface);
+    margin-bottom: 8px;
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--md-on-surface-variant);
+    margin-bottom: 16px;
+}
+
+.hero-hitokoto {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--md-primary);
+    font-style: italic;
+    background: var(--md-primary-container);
+    border-radius: 999px;
+    padding: 10px 20px;
+    margin: 0 auto 28px;
+    max-width: 90%;
+}
+
+/* ---------- 导航按钮（MD3 Filled Tonal 药丸按钮） ---------- */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.md-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border-radius: 999px;
+    background: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .1px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease, box-shadow .2s ease, transform .1s ease;
+}
+
+/* 状态层：hover 变暗、active 更深（MD 状态层语义） */
+.md-btn:hover {
+    background: #DDD3F0;
+    box-shadow: var(--md-shadow-2);
+}
+
+.md-btn:active {
+    background: #D0C4EC;
+    transform: scale(.97);
+    box-shadow: var(--md-shadow-1);
+}
+
+.md-btn .material-icons {
+    font-size: 18px;
+}
+
+/* ---------- 社交图标（圆形 tonal 按钮） ---------- */
+.social-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--md-surface-variant);
+    color: var(--md-on-surface-variant);
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color .2s ease, box-shadow .2s ease, transform .1s ease;
+}
+
+.social-link:hover {
+    background: #D8D2DE;
+    box-shadow: var(--md-shadow-2);
+}
+
+.social-link:active {
+    transform: scale(.92);
+}
+
+/* ---------- 页脚 ---------- */
+.hero-footer {
+    border-top: 1px solid var(--md-outline);
+    padding-top: 16px;
+}
+
+.hero-footer a {
+    font-size: 12px;
+    color: var(--md-on-surface-variant);
+    text-decoration: none;
+}
+
+.hero-footer a:hover {
+    color: var(--md-primary);
+}
+
+/* ---------- 音乐 FAB（浮动操作按钮） ---------- */
+.fab {
+    position: fixed;
+    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-fab);
+    background: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    box-shadow: var(--md-shadow-3);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: box-shadow .2s ease, transform .1s ease;
+}
+
+.fab:hover {
+    box-shadow: 0 6px 12px 4px rgba(0, 0, 0, .18), 0 2px 4px rgba(0, 0, 0, .30);
+}
+
+.fab:active {
+    transform: scale(.9);
+}
+
+.fab .material-icons {
+    font-size: 26px;
+}
+
+/* ---------- 吸底播放器 ---------- */
+.aplayer {
+    border-radius: 16px 16px 0 0 !important;
+}
+
+.aplayer.aplayer-fixed .aplayer-body {
+    bottom: 0;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+#aplayer-fixed.hidden {
+    display: none !important;
+}
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 767px) {
+    .page {
+        padding: 20px 14px;
+    }
+
+    .hero {
+        padding: 36px 22px 22px;
+        border-radius: 24px;
+    }
+
+    .hero-avatar {
+        width: 104px;
+        height: 104px;
+    }
+
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .nav-grid {
+        gap: 10px;
+    }
+
+    .md-btn {
+        font-size: 13px;
+        padding: 11px 6px;
+    }
+
+    .fab {
+        right: 18px;
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero {
+        padding: 28px 16px 18px;
+    }
+
+    .hero-avatar {
+        width: 92px;
+        height: 92px;
+    }
+
+    .md-btn {
+        font-size: 12px;
+    }
+}
