@@ -205,6 +205,11 @@ body {
     display: block;
 }
 
+.social-link .material-icons {
+    font-size: 22px;
+    line-height: 1;
+}
+
 .social-link:hover {
     background: #D8D2DE;
     box-shadow: var(--md-shadow-2);
